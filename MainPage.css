@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+    height: auto;
+    width: auto;
+}
+
+form {
+    display: none;
+}
+
+.form-holder {
+    display: none;
+}
+
+#nav-container {
+    position: relative;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    z-index: 5;
+}
+
+#navbar {
+    background-color: #4863A0;
+    height: 5%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#search-bar {
+    display: none;
+    background-color: #304090;
+    height: 4%;
+    width: 100%;
+    position: fixed;
+    top: 5%;
+    left: 0;
+    padding-left: 10px;
+    padding-right: 20px;
+    color: white;
+}
+
+#internal-display {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    margin-top: -80px;
+    padding-top: 50px;
+    backface-visibility: hidden;
+    will-change: overflow;
+}
+
+#scrollable-items {
+    border: solid;
+    overflow: auto;
+    height: 100%;
+    width: 40%;
+    padding: 0;
+    margin: 0;
+}
+
+#item-display {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+}
+
+#item-container {
+    height: 50%;
+    width: 100%;
+    border: solid;
+}
+
+#item-options {
+    height: 50%;
+    border: solid;
+    padding-left: 25px;
+}
+
+#resource-button {
+    position: absolute;
+    left: 5px;
+    bottom: 2px;
+}
+
+#product-button {
+    position: absolute;
+    left: 90px;
+    bottom: 2px;
+}
+
+#sales-button {
+    position: absolute;
+    left: 165px;
+    bottom: 2px;
+}
+
+#search-button {
+    position: absolute;
+    left: 219px;
+    bottom: 2px;
+}
+
+.image {
+    border: solid;
+    height: auto;
+    width: auto;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.item-top {
+    border: solid;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 50%;
+}
+
+.item-bottom {
+    border: solid;
+    height: auto;
+    width: auto;
+}
+
+.item-details {
+    border: solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+}

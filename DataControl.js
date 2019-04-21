@@ -1,0 +1,61 @@
+import Item from "../items/Item.js";
+import LoadData from "../loading/LoadData.js";
+import MockDataLoader from "../loading/MockDataLoader.js";
+
+let loader;
+
+window.onload = function load () {
+
+    loader = new MockDataLoader (1, 7, 2);
+    let item = loader.find ("thingy");
+
+    console.log(item);
+
+    if (item != undefined) {
+        displayItem (item, "#item-container");
+    }
+
+    displayItemList(loader.allItems());
+
+    $('#scrollable-items .item').click(setMainItem);
+
+}
+
+function displayItem(item, location) {
+    let details = item.details;
+    let detailHTML = "";
+
+    for (let i = 0; i < details.length; ++i) {
+        detailHTML += '<h1>' + details[i] + '</h1>';
+    }
+
+    let itemHTML = '<div class="item" id="' + item.id + '">' +
+                        '<div class="item-top">' +
+                             '<img class="image" src=# alt="Here lays an image!">' +
+                             '<div class="item-details">' +
+                                  detailHTML +
+                             '</div>' +
+                        '</div>' +
+                        '<div class="item-bottom">' +
+                             item.description +
+                        '</div>' +
+                    '</div>';
+
+    $(location).append (itemHTML);
+}
+
+function displayItemList (items) {
+    items.forEach (function (element) {
+        displayItem (element, "#scrollable-items");
+    })
+}
+
+function setMainItem() {
+	console.log(this.id);
+	let item = $('#item-container .item');
+
+	$('#scrollable-items #' + item.attr('id')).css({'background-color': 'white'});
+	$('#item-container').empty();
+	$('#item-container').append($(this).clone());
+	$(this).css({'background-color': 'lightblue'});
+}
