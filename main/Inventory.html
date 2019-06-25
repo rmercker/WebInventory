@@ -22,7 +22,7 @@
 
         <div id="search-bar">
             <div id="search-bar-positioning"> search parameters are optional.
-            <form id="product-search-bar-form" action=<?php htmlspecialchars($SERVER['PHP_SELF']); ?>
+            <form id="product-search-bar-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>" method="post">
                 name:
                 <input type="text" name="name">
                 amount available:
@@ -38,7 +38,7 @@
                 <input type="button" name="submit" value="submit">
             </form>
 
-            <form id="resource-search-bar-form" action=<?php htmlspecialchars($SERVER['PHP_SELF']); ?>>
+            <form id="resource-search-bar-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">
                 name:
                 <input type="text" name="name">
                 amount available:
@@ -58,7 +58,7 @@
                 <input type="button" name="submit" value="submit">
             </form>
 
-            <form id="sales-search-bar-form" action=<?php htmlspecialchars($SERVER['PHP_SELF']); ?>>
+            <form id="sales-search-bar-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">
                 not doing anythings... yet.
             </form>
             </div>
@@ -77,7 +77,7 @@
                 <button id="create-sale-button">Create Sale</button>
 
                 <div class="form-holder" id="update-forms">
-                    <form id="product-update-form" action=<?php htmlspecialchars($SERVER['PHP_SELF']); ?>>
+                    <form id="product-update-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">
                         name:
                         <input type="text" name="name"> <br>
                         amount available:
@@ -95,7 +95,7 @@
                         <input type="button" name="submit" value="submit">
                     </form>
 
-                    <form id="resource-update-form" action=<?php htmlspecialchars($SERVER['PHP_SELF']); ?>
+                    <form id="resource-update-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">
                         name:
                         <input type="text" name="name"> <br>
                         cost of item:
@@ -113,18 +113,48 @@
                         <input type="button" name="submit" value="submit">
                     </form>
 
-                    <form id="sale-update-form" action=<?php htmlspecialchars($SERVER['PHP_SELF']); ?>>
+                    <form id="sale-update-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">
                         nothing here either.
                     </form>
                 </div>
                 <div class="form-holder" id="create-sale-forms">
-                    <form id="product-create-sale" action=<?php htmlspecialchars($SERVER['PHP_SELF']); ?>>Product Sale Here</form>
-                    <form id="resource-create-sale" action=<?php htmlspecialchars($SERVER['PHP_SELF']); ?>>Resource Sale Here</form>
+                    <form id="product-create-sale" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">Product Sale Here</form>
+                    <form id="resource-create-sale" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">Resource Sale Here</form>
                 </div>
             </div>
         </div>
 
     </div>
+
+
+
+
+    <template id="scrollable-item-template">
+            <div class="item">
+                <div class="item-top">
+                    <img class="image" src=# alt="Here lays an image!">
+                    <div class="item-details"></div>
+                </div>
+                
+                <div class="item-bottom">
+                
+                </div>
+            </div>
+    </template>
+
+    <template id="main-item-template">
+            <div class="item" id ="">
+                <div class="item-top">
+                    <img class="image" src=# alt="Here lays an image!">
+                    <div class="item-details"></div>  
+                </div>
+                
+                <div class="item-bottom">
+                
+                </div>
+            </div>
+    </template>
+
 
     <script type="module" src="DataControl.js"></script>
     <script type="module" src="ButtonControls.js"></script>

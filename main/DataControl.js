@@ -7,13 +7,6 @@ let loader;
 window.onload = function load () {
 
     loader = new MockDataLoader (1, 7, 2);
-    let item = loader.find ("thingy");
-
-    console.log(item);
-
-    if (item != undefined) {
-        displayItem (item, "#item-container");
-    }
 
     displayItemList(loader.allItems());
 
@@ -26,10 +19,10 @@ function displayItem(item, location) {
     let detailHTML = "";
 
     for (let i = 0; i < details.length; ++i) {
-        detailHTML += '<h1>' + details[i] + '</h1>';
+        detailHTML += "<h1>" + details[i] + "<h1>";
     }
 
-    let itemHTML = '<div class="item" id="' + item.id + '">' +
+/*    let itemHTML = '<div class="item" id="' + item.id + '">' +
                         '<div class="item-top">' +
                              '<img class="image" src=# alt="Here lays an image!">' +
                              '<div class="item-details">' +
@@ -40,8 +33,16 @@ function displayItem(item, location) {
                              item.description +
                         '</div>' +
                     '</div>';
+*/
+
+    let fragment = document.importNode(document.querySelector('#scrollable-item-template').content, true);
+    let itemHTML = fragment.querySelector(".item");
+    itemHTML.id = item.id;
 
     $(location).append (itemHTML);
+
+    $(itemHTML).find(".item-details").append(detailHTML);
+    $(itemHTML).find(".item-bottom").append(item.description);
 }
 
 function displayItemList (items) {
@@ -51,7 +52,6 @@ function displayItemList (items) {
 }
 
 function setMainItem() {
-	console.log(this.id);
 	let item = $('#item-container .item');
 
 	$('#scrollable-items #' + item.attr('id')).css({'background-color': 'white'});
