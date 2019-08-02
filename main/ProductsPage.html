@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="MainPage.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="MainPage.css?ver=4.1">
     <title>Inventory_System</title>
 
     <!-- latest jQuery direct from google's CDN -->
@@ -18,7 +18,6 @@
 
         <div id="search-bar">
             <div id="search-bar-positioning"> search parameters are optional.
-            
 
             <form id="resource-search-bar-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">
                 name:
@@ -111,13 +110,11 @@
     </template>
 
 
-    <script type="module" src="DataControl.js"></script>
-    <script type="module" src="ButtonControls.js"></script>
-        <script> 
-        $(function() {
-            $("#nav-placeholder").load("NavBar.html");
-        });
+    <script> 
+        $("#nav-placeholder").load("NavBar.html");
     </script>
-    
+
+    <script type="module" src="DataControl.js"></script>
+    <script type="module" src="ButtonControls.js?0.7"></script>
 </body>
 </html>

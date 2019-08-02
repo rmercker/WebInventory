@@ -2,13 +2,13 @@
 
 let searchOpen = false; // is the search bar up or down
 let itemType = ""; // determine which view we are currently in
-setupProductButton(); //default page is product view
 
 
 $('#product-button').click(setupProductButton);
 
 function setupProductButton() {
-	window.location.href = "http://www.ProductsPage.html";
+	if (getHrefString() !== "ProductsPage.html")
+		window.location.href = "ProductsPage.html";
 }
 
 
@@ -16,7 +16,8 @@ function setupProductButton() {
 $('#resource-button').click(setupResourceButton);
 
 function setupResourceButton() {
-	window.location.href = "http://www.ResourcePage.html";
+	if (getHrefString() !== "ResourcesPage.html")
+		window.location.href = "ResourcesPage.html";
 }
 
 
@@ -24,7 +25,20 @@ function setupResourceButton() {
 $('#sales-button').click(setupSalesButton);
 
 function setupSalesButton() {
-	window.location.href = "http://www.SalesPage.html";
+	if (getHrefString() !== "SalesPage.html")
+		window.location.href = "SalesPage.html";
+}
+
+
+
+function getHrefString() {
+	var index = window.location.href.lastIndexOf('/')
+	var str = window.location.href.substring(index + 1);
+
+	if (str === "")
+		str = window.location.href.substring(window.location.href.lastIndexOf('/', index - 1) + 1);
+
+	return str;
 }
 
 
