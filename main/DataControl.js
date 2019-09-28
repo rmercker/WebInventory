@@ -52,10 +52,21 @@ function displayItemList (items) {
 }
 
 function setMainItem() {
-	let item = $('#item-container .item');
+	let item = $('#item-container .mainItem');
 
 	$('#scrollable-items #' + item.attr('id')).css({'background-color': 'white'});
 	$('#item-container').empty();
-	$('#item-container').append($(this).clone());
+
+    let mainItem = $(this).clone();
+    mainItem.attr('class', "mainItem")
+	$('#item-container').append(mainItem);
+
 	$(this).css({'background-color': 'lightblue'});
+}
+
+function mainItemView() {
+    let fragment = document.importNode(document.querySelector('#main-item-template').content, true);
+    let itemHTML = fragment.querySelector(".item");
+
+    return itemHTML;
 }

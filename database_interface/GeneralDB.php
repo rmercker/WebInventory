@@ -1,6 +1,19 @@
 <?php
 
-// calls general db functions in the specific db php file.
+function search() {
 
+}
+
+function add() {
+	
+}
+
+function remove() {
+
+}
+
+function update() {
+
+}
 
 ?>

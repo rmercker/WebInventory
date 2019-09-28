@@ -79,14 +79,14 @@ h1 {
 }
 
 #item-container {
+    border: solid;
     height: 50%;
     width: 100%;
-    border: solid;
 }
 
 #item-options {
-    height: 50%;
     border: solid;
+    height: 50%;
     padding-left: 25px;
 }
 
@@ -115,35 +115,48 @@ h1 {
 }
 
 .image {
-    border: solid;
+    border-right: solid;
+    border-width: 1px;
     height: auto;
     width: auto;
 }
 
 .item {
     display: flex;
+    border: solid;
     flex-direction: column;
     height: auto;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.mainItem {
+    display: flex;
+    border: solid;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .item-top {
-    border: solid;
     display: flex;
     flex-direction: row;
     flex-basis: 50%;
 }
 
 .item-bottom {
-    border: solid;
+    border-top: solid;
+    border-width: 1px;
     height: auto;
-    width: auto;
+    width: 100%;
 }
 
 .item-details {
-    border: solid;
     display: flex;
+    border-width: 1px;
     flex-direction: row;
     flex-wrap: wrap;
     height: auto;

@@ -19,7 +19,7 @@
         <div id="search-bar">
             <div id="search-bar-positioning"> search parameters are optional.
 
-            <form id="resource-search-bar-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">
+            <form id="resource-search-bar-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                 name:
                 <input type="text" name="name">
                 amount available:
@@ -55,7 +55,7 @@
                 <button id="create-sale-button">Create Sale</button>
 
                 <div class="form-holder" id="update-forms">
-                        <form id="resource-update-form" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">
+                        <form id="resource-update-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                         name:
                         <input type="text" name="name"> <br>
                         cost of item:
@@ -75,7 +75,7 @@
 
                 </div>
                 <div class="form-holder" id="create-sale-forms">
-                    <form id="resource-create-sale" action="<?php htmlspecialchars($SERVER['PHP_SELF']); ?>">Resource Sale Here</form>
+                    <form id="resource-create-sale" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">Resource Sale Here</form>
                 </div>
             </div>
         </div>
