@@ -114,6 +114,12 @@ h1 {
     bottom: 2px;
 }
 
+#logout-button {
+    position: absolute;
+    right: 5px;
+    bottom: 2px;
+}
+
 .image {
     border-right: solid;
     border-width: 1px;

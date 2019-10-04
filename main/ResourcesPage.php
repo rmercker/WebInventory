@@ -1,8 +1,24 @@
+<?php
+    
+    require '../login/LoginSecurity.php';
+
+    session_start();
+
+    if (!isset($_SESSION['token']) || !validUserLoggedIn($_SESSION['token'])) {
+        session_unset();
+        session_destroy();
+        $_SESSION = array();
+        header("Location: ../login/Login.php");
+        exit();
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="MainPage.css?ver=4.1">
+    <link rel="stylesheet" type="text/css" href="MainPage.css?ver=4.3">
     <title>Inventory_System</title>
 
     <!-- latest jQuery direct from google's CDN -->
@@ -38,6 +54,7 @@
                 <input type='text' name='supplier'>
                 <input type="button" name="submit" value="submit">
             </form>
+
             </div>
         </div>
     </div>
@@ -54,26 +71,27 @@
                 <button id="create-sale-button">Create Sale</button>
 
                 <div class="form-holder" id="update-forms">
-                    <form id="product-update-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                        <form id="resource-update-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                         name:
                         <input type="text" name="name"> <br>
-                        amount available:
-                        <input type="number" name="unit" step="1" min="0"> <br>
-                        pricing of item:
-                        <input type="number" name="price" step="0.01" min="0"> <br>
-                        labor for item:
-                        <input type="number" name="labor" step="0.01" min="0"> <br>
-                        whole sale of item:
-                        <input type="number" name="wholeSale" step="0.01" min="0"> <br>
-                        retail of item:
-                        <input type="number" name="retial" step="0.01" min="0"> <br> <br>
+                        cost of item:
+                        <input type="number" name="cost" step="0.01" min="0"> <br>
+                        amount of item:
+                        <input type="number" name="unit" step="0.01" min="0"> <br>
+                        units of measurement:
+                        <input type="number" name="unityType" step="0.01" min="0"> <br>
+                        supplier of item:
+                        <input type="text" name="supplier"> <br>
+                        quality of item:
+                        <input type="text" name="quality"> <br> <br>
                         description of item: <br>
                         <textarea name="description" rows="10" cols="30"></textarea> <br>
                         <input type="button" name="submit" value="submit">
                     </form>
+
                 </div>
                 <div class="form-holder" id="create-sale-forms">
-                    <form id="product-create-sale" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">Product Sale Here</form>
+                    <form id="resource-create-sale" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">Resource Sale Here</form>
                 </div>
             </div>
         </div>
@@ -111,10 +129,10 @@
 
 
     <script> 
-        $("#nav-placeholder").load("NavBar.html");
+        $("#nav-placeholder").load("NavBar.html?ver=1.0");
     </script>
 
     <script type="module" src="DataControl.js"></script>
-    <script type="module" src="ButtonControls.js?0.7"></script>
+    <script type="module" src="ButtonControls.js?0.8"></script>
 </body>
 </html>

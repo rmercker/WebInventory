@@ -36,8 +36,3 @@ body {
 	height: 5%;
 	width: 50%;
 }
-
-#error-message {
-	display: none;
-	text-decoration-color: red;
-}

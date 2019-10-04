@@ -1,8 +1,24 @@
+<?php
+    
+    require '../login/LoginSecurity.php';
+
+    session_start();
+
+    if (!isset($_SESSION['token']) || !validUserLoggedIn($_SESSION['token'])) {
+        session_unset();
+        session_destroy();
+        $_SESSION = array();
+        header("Location: ../login/Login.php");
+        exit();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="MainPage.css?ver=4.1">
+    <link rel="stylesheet" type="text/css" href="MainPage.css?ver=4.3">
     <title>Inventory_System</title>
 
     <!-- latest jQuery direct from google's CDN -->
@@ -77,10 +93,10 @@
 
 
     <script> 
-        $("#nav-placeholder").load("NavBar.html");
+        $("#nav-placeholder").load("NavBar.html?ver=1.0");
     </script>
 
     <script type="module" src="DataControl.js"></script>
-    <script type="module" src="ButtonControls.js?0.7"></script>
+    <script type="module" src="ButtonControls.js?0.8"></script>
 </body>
 </html>

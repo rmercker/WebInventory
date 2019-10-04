@@ -7,8 +7,8 @@ let itemType = ""; // determine which view we are currently in
 $('#product-button').click(setupProductButton);
 
 function setupProductButton() {
-	if (getHrefString() !== "ProductsPage.html")
-		window.location.href = "ProductsPage.html";
+	if (getHrefString() !== "ProductsPage.php")
+		window.location.href = "ProductsPage.php";
 }
 
 
@@ -16,8 +16,8 @@ function setupProductButton() {
 $('#resource-button').click(setupResourceButton);
 
 function setupResourceButton() {
-	if (getHrefString() !== "ResourcesPage.html")
-		window.location.href = "ResourcesPage.html";
+	if (getHrefString() !== "ResourcesPage.php")
+		window.location.href = "ResourcesPage.php";
 }
 
 
@@ -25,10 +25,18 @@ function setupResourceButton() {
 $('#sales-button').click(setupSalesButton);
 
 function setupSalesButton() {
-	if (getHrefString() !== "SalesPage.html")
-		window.location.href = "SalesPage.html";
+	if (getHrefString() !== "SalesPage.php")
+		window.location.href = "SalesPage.php";
 }
 
+
+
+$('#logout-button').click(setupLogoutButton);
+
+function setupLogoutButton() {
+	window.location.href = "../login/Login.php?logout=true";
+	console.log("changed location");
+}
 
 
 function getHrefString() {

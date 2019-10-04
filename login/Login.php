@@ -1,33 +1,46 @@
-<!DOCTYPE html>
-
 <?php
 
-	include 'LoginSecurity.php';
+	require 'LoginSecurity.php';
 
-	$document = new DOMDocument();
-	$document->loadHTML("Login.php");
-	$document->validate();
-	$errorMessagePosition = $document->getElementById("error-message");
-	$errorMessagePosition->setAttribute("display", "none");
+	session_start();
 
-	if (isset($_SESSION)) {
+	if (isset($_GET['logout']) && $_GET['logout'] == true) {
+		if (isset($_SESSION['token']))
+			logout($_SESSION['token']);
+
+		session_unset();
+		session_destroy();
+		$_SESSION['token'] == NULL;
+		$_SESSION = array();
+		header("Location: ./Login.php");
+		exit();
+	}
+
+	if (isset($_SESSION['token']) && (validUserLoggedIn($_SESSION['token']))) {
+		header("Location: ../main/ProductsPage.php");
+		exit();
+	} else if (isset($_SESSION['token'])) {
+		session_unset();
 		session_destroy();
 		$_SESSION = array();
-		setcookie();
+		header("Location: ./Login.php?");
+		exit();
 	}
 
 	if (isset($_POST["login"])) {
 		if (login($_POST["user-name"], $_POST["password"])) {
-			session_start();
-			header("Location: ../main/ProductsPage.html");
+			$_SESSION['token'] = getTokenForSession();
+			header("Location: ../main/ProductsPage.php");
 			exit();
 		} else {
-			$errorMessagePosition.setAttribute("display", "inline");
+			header("Location: ./Login.php?error=1");
+			exit();
 		}
 	}
 
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 	<meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="LoginStyle.css">
@@ -44,14 +57,18 @@
 
 	<div id=login-form>
 		<div id=form-position>
-			<div id=error-message>
-				"There is an issue with your username and/ or password."
-			</div>
+			<?php
+				if (isset($_GET['error'])) {
+					if (isset($_GET["error"]) && $_GET["error"] == "1") {
+						echo "<font color='red'>There is an issue with your username and/ or password.</font> <br><br>";
+					}
+				}
+			?>
 			<form id="login" method="post" action="">
 				User Name: <br>
 				<input type="text" name="user-name" placeholder="user name here!"> <br> <br>
 				Password: <br>
-				<input type="text" name="password" placeholder="password here!"> <br> <br>
+				<input type="password" name="password" placeholder="password here!"> <br> <br>
 				<button type="submit" name="login">Login</button>
 			</form>
 		</div>
