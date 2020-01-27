@@ -8,8 +8,8 @@
         session_unset();
         session_destroy();
         $_SESSION = array();
-        header("Location: ../login/Login.php");
-        exit();
+        //header("Location: ../login/Login.php");
+        //exit();
     }
 
 ?>

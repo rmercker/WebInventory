@@ -1,26 +1,33 @@
 <?php
-
 	if (basename($_SERVER["PHP_SELF"]) == "LoginSecurity.php") {
 		Header("Location: ./Login.php");
 		exit();
 	}
 
-	function login($name, $password) {
-		$hashword = password_hash("password", PASSWORD_DEFAULT, ['cost' => 12]);
+	require '../database_interface/Database.php';
 
-		return $name == "name" && $hashword == password_verify($password, $hashword);
+	function login($name, $password) {
+
+		if ($name == null || $password == null) return false;
+		
+		$hashword = getUserHashword($name);
+		if ($hashword == null) return false;
+
+		return password_verify($password, $hashword);
 	}
 
 	function logout($token) {
 		// removes user from logged in table
+		removeUserLogin($token);
 	}
 
 	function validUserLoggedIn($token) {
 		// check session token against saved user token
-		return true;
+
+		return checkUserLogin($token);
 	}
 
-	function getTokenForSession() {
+	function getTokenForSession($username) {
 		// returns a token to be saved for the current session.
         $token = bin2hex(random_bytes(64));
 
@@ -28,11 +35,13 @@
         	$token = bin2hex(random_bytes(64));
         }
 
+        addUserLogin($username, $token);
+
         return $token;
 	}
 
 	function verifyUniqueToken($token) {
 		// check logged in user table to ensure uniqueness
-		return true;
+		return containsToken($token);
 	}
 ?>

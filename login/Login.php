@@ -3,7 +3,7 @@
 	require 'LoginSecurity.php';
 
 	session_start();
-
+	
 	if (isset($_GET['logout']) && $_GET['logout'] == true) {
 		if (isset($_SESSION['token']))
 			logout($_SESSION['token']);
@@ -29,9 +29,9 @@
 
 	if (isset($_POST["login"])) {
 		if (login($_POST["user-name"], $_POST["password"])) {
-			$_SESSION['token'] = getTokenForSession();
-			header("Location: ../main/ProductsPage.php");
-			exit();
+			$_SESSION['token'] = getTokenForSession($_POST["user-name"]);
+			//header("Location: ../main/ProductsPage.php");
+			//exit();
 		} else {
 			header("Location: ./Login.php?error=1");
 			exit();
