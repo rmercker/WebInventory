@@ -7,8 +7,6 @@
 
 
 	function getConnection() {
-		$Username = "system";
-		$Password = "bob101bob";
 		$DBinstance = "(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SID = xe)))";
 
 
